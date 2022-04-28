@@ -49,7 +49,14 @@ nums[0] = [<em><strong>3</strong></em>,1,2,<em><strong>4</strong></em>,5]，nums
 <!-- 这里可写当前语言的特殊实现逻辑 -->
 
 ```python
-
+class Solution:
+    def intersection(self, nums: List[List[int]]) -> List[int]:
+        cnt = [0] * 1001
+        for num in nums:
+            for v in num:
+                cnt[v] += 1
+        n = len(nums)
+        return [i for i, v in enumerate(cnt) if v == n]
 ```
 
 ### **Java**
@@ -57,7 +64,23 @@ nums[0] = [<em><strong>3</strong></em>,1,2,<em><strong>4</strong></em>,5]，nums
 <!-- 这里可写当前语言的特殊实现逻辑 -->
 
 ```java
-
+class Solution {
+    public List<Integer> intersection(int[][] nums) {
+        int[] cnt = new int[1001];
+        for (int[] num : nums) {
+            for (int i : num) {
+                cnt[i]++;
+            }
+        }
+        List<Integer> ans = new ArrayList<>();
+        for (int i = 1; i <= 1000; i++) {
+            if (cnt[i] == nums.length) {
+                ans.add(i);
+            }
+        }
+        return ans;
+    }
+}
 ```
 
 ### **TypeScript**
@@ -73,6 +96,46 @@ function intersection(nums: number[][]): number[] {
     }
     return ans.sort((a, b) => a - b);
 };
+```
+
+### **C++**
+
+```cpp
+class Solution {
+public:
+    vector<int> intersection(vector<vector<int>>& nums) {
+        vector<int> cnt(1001);
+        for (auto& num : nums)
+            for (int v : num)
+                ++cnt[v];
+        int n = nums.size();
+        vector<int> ans;
+        for (int i = 1; i < 1001; ++i)
+            if (cnt[i] == n)
+                ans.push_back(i);
+        return ans;
+    }
+};
+```
+
+### **Go**
+
+```go
+func intersection(nums [][]int) []int {
+	cnt := make([]int, 1001)
+	for _, num := range nums {
+		for _, v := range num {
+			cnt[v]++
+		}
+	}
+	var ans []int
+	for i, v := range cnt {
+		if v == len(nums) {
+			ans = append(ans, i)
+		}
+	}
+	return ans
+}
 ```
 
 ### **...**

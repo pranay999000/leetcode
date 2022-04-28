@@ -51,6 +51,31 @@
 
 ### **Python3**
 
+Graph coloring: 
+
+```python
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        def dfs(u, c):
+            color[u] = c
+            for v in graph[u]:
+                if not color[v]:
+                    if not dfs(v, 3 - c):
+                        return False
+                elif color[v] == c:
+                    return False
+            return True
+
+        n = len(graph)
+        color = [0] * n
+        for i in range(n):
+            if not color[i] and not dfs(i, 1):
+                return False
+        return True
+```
+
+Union find:
+
 ```python
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
@@ -59,8 +84,7 @@ class Solution:
                 p[x] = find(p[x])
             return p[x]
 
-        n = len(graph)
-        p = list(range(n))
+        p = list(range(len(graph)))
         for u, g in enumerate(graph):
             for v in g:
                 if find(u) == find(v):
@@ -70,6 +94,43 @@ class Solution:
 ```
 
 ### **Java**
+
+Graph coloring: 
+
+```java
+class Solution {
+    private int[] color;
+    private int[][] g;
+
+    public boolean isBipartite(int[][] graph) {
+        int n = graph.length;
+        color = new int[n];
+        g = graph;
+        for (int i = 0; i < n; ++i) {
+            if (color[i] == 0 && !dfs(i, 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean dfs(int u, int c) {
+        color[u] = c;
+        for (int v : g[u]) {
+            if (color[v] == 0) {
+                if (!dfs(v, 3 - c)) {
+                    return false;
+                }
+            } else if (color[v] == c) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+Union find:
 
 ```java
 class Solution {
@@ -102,39 +163,38 @@ class Solution {
 }
 ```
 
-### **TypeScript**
+### **C++**
 
-```ts
-function isBipartite(graph: number[][]): boolean {
-    const n = graph.length;
-    let valid = true;
-    let colors = new Array(n).fill(0);
-    // 0 未遍历， 1 红色标记， 2 绿色标记
+Graph coloring: 
 
-    function dfs(idx: number, color: number, graph: number[][]) {
-        colors[idx] = color;
-        const nextColor = color == 1 ? 2 : 1;
-        for (let j of graph[idx]) {
-            if (!colors[j]) {
-                dfs(j, nextColor, graph);
-                if (!valid) return;
-            } else if (colors[j] != nextColor) {
-                valid = false;
-                return;
+```cpp
+class Solution {
+public:
+    bool isBipartite(vector<vector<int>>& graph) {
+        int n = graph.size();
+        vector<int> color(n);
+        for (int i = 0; i < n; ++i)
+            if (!color[i] && !dfs(i, 1, color, graph))
+                return false;
+        return true;
+    }
+
+    bool dfs(int u, int c, vector<int>& color, vector<vector<int>>& g) {
+        color[u] = c;
+        for (int& v : g[u])
+        {
+            if (!color[v])
+            {
+                if (!dfs(v, 3 - c, color, g)) return false;
             }
+            else if (color[v] == c) return false;
         }
+        return true;
     }
-
-    for (let i = 0; i < n && valid; i++) {
-        if (!colors[i]) {
-            dfs(i, 1, graph);
-        }
-    }
-    return valid;
-}
+};
 ```
 
-### **C++**
+Union find:
 
 ```cpp
 class Solution {
@@ -166,6 +226,37 @@ public:
 
 ### **Go**
 
+Graph coloring: 
+
+```go
+func isBipartite(graph [][]int) bool {
+	n := len(graph)
+	color := make([]int, n)
+	var dfs func(u, c int) bool
+	dfs = func(u, c int) bool {
+		color[u] = c
+		for _, v := range graph[u] {
+			if color[v] == 0 {
+				if !dfs(v, 3-c) {
+					return false
+				}
+			} else if color[v] == c {
+				return false
+			}
+		}
+		return true
+	}
+	for i := range graph {
+		if color[i] == 0 && !dfs(i, 1) {
+			return false
+		}
+	}
+	return true
+}
+```
+
+Union find:
+
 ```go
 func isBipartite(graph [][]int) bool {
 	n := len(graph)
@@ -194,15 +285,16 @@ func isBipartite(graph [][]int) bool {
 
 ### **TypeScript**
 
+Graph coloring: 
+
 ```ts
 function isBipartite(graph: number[][]): boolean {
     const n = graph.length;
     let valid = true;
     let colors = new Array(n).fill(0);
-
     function dfs(idx: number, color: number, graph: number[][]) {
         colors[idx] = color;
-        const nextColor = color == 1 ? 2 : 1;
+        const nextColor = 3 - color;
         for (let j of graph[idx]) {
             if (!colors[j]) {
                 dfs(j, nextColor, graph);
@@ -220,6 +312,33 @@ function isBipartite(graph: number[][]): boolean {
         }
     }
     return valid;
+}
+```
+
+Union find:
+
+```ts
+function isBipartite(graph: number[][]): boolean {
+    const n = graph.length;
+    let p = new Array(n);
+    for (let i = 0; i < n; ++i) {
+        p[i] = i;
+    }
+    function find(x) {
+        if (p[x] != x) {
+            p[x] = find(p[x]);
+        }
+        return p[x];
+    }
+    for (let u = 0; u < n; ++u) {
+        for (let v of graph[u]) {
+            if (find(u) == find(v)) {
+                return false;
+            }
+            p[find(v)] = find(graph[u][0]);
+        }
+    }
+    return true;
 }
 ```
 
