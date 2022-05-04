@@ -228,6 +228,126 @@ func getAllElements(root1 *TreeNode, root2 *TreeNode) []int {
 }
 ```
 
+### **Rust**
+
+```rust
+// Definition for a binary tree node.
+// #[derive(Debug, PartialEq, Eq)]
+// pub struct TreeNode {
+//   pub val: i32,
+//   pub left: Option<Rc<RefCell<TreeNode>>>,
+//   pub right: Option<Rc<RefCell<TreeNode>>>,
+// }
+//
+// impl TreeNode {
+//   #[inline]
+//   pub fn new(val: i32) -> Self {
+//     TreeNode {
+//       val,
+//       left: None,
+//       right: None
+//     }
+//   }
+// }
+use std::cell::RefCell;
+use std::rc::Rc;
+impl Solution {
+    pub fn get_all_elements(
+        root1: Option<Rc<RefCell<TreeNode>>>,
+        root2: Option<Rc<RefCell<TreeNode>>>,
+    ) -> Vec<i32> {
+        fn dfs(root: &Option<Rc<RefCell<TreeNode>>>, t: &mut Vec<i32>) {
+            if let Some(root) = root {
+                dfs(&root.borrow().left, t);
+                t.push(root.borrow().val);
+                dfs(&root.borrow().right, t);
+            }
+        }
+
+        let mut t1 = Vec::new();
+        let mut t2 = Vec::new();
+        dfs(&root1, &mut t1);
+        dfs(&root2, &mut t2);
+
+        let mut ans = Vec::new();
+        let mut i = 0;
+        let mut j = 0;
+        while i < t1.len() && j < t2.len() {
+            if t1[i] < t2[j] {
+                ans.push(t1[i]);
+                i += 1;
+            } else {
+                ans.push(t2[j]);
+                j += 1;
+            }
+        }
+        while i < t1.len() {
+            ans.push(t1[i]);
+            i += 1;
+        }
+        while j < t2.len() {
+            ans.push(t2[j]);
+            j += 1;
+        }
+        ans
+    }
+}
+```
+
+### **TypeScript**
+
+```ts
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     val: number
+ *     left: TreeNode | null
+ *     right: TreeNode | null
+ *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.left = (left===undefined ? null : left)
+ *         this.right = (right===undefined ? null : right)
+ *     }
+ * }
+ */
+
+function getAllElements(
+    root1: TreeNode | null,
+    root2: TreeNode | null,
+): number[] {
+    const res = [];
+    const stacks = [[], []];
+    while (
+        root1 != null ||
+        stacks[0].length !== 0 ||
+        root2 != null ||
+        stacks[1].length !== 0
+    ) {
+        if (root1 != null) {
+            stacks[0].push(root1);
+            root1 = root1.left;
+        } else if (root2 != null) {
+            stacks[1].push(root2);
+            root2 = root2.left;
+        } else {
+            if (
+                (stacks[0][stacks[0].length - 1] ?? { val: Infinity }).val <
+                (stacks[1][stacks[1].length - 1] ?? { val: Infinity }).val
+            ) {
+                const { val, right } = stacks[0].pop();
+                res.push(val);
+                root1 = right;
+            } else {
+                const { val, right } = stacks[1].pop();
+                res.push(val);
+                root2 = right;
+            }
+        }
+    }
+    return res;
+}
+```
+
 ### **...**
 
 ```

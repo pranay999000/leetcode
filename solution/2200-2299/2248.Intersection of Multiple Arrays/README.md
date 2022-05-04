@@ -1,4 +1,4 @@
-# [2248. 多个数组求交集](https://leetcode-cn.com/problems/intersection-of-multiple-arrays)
+# [2248. 多个数组求交集](https://leetcode.cn/problems/intersection-of-multiple-arrays)
 
 [English Version](/solution/2200-2299/2248.Intersection%20of%20Multiple%20Arrays/README_EN.md)
 
@@ -95,7 +95,7 @@ function intersection(nums: number[][]): number[] {
         ans = ans.filter(v => cur.has(v));
     }
     return ans.sort((a, b) => a - b);
-};
+}
 ```
 
 ### **C++**

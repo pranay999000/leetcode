@@ -1,4 +1,4 @@
-# [1244. 力扣排行榜](https://leetcode-cn.com/problems/design-a-leaderboard)
+# [1244. 力扣排行榜](https://leetcode.cn/problems/design-a-leaderboard)
 
 [English Version](/solution/1200-1299/1244.Design%20A%20Leaderboard/README_EN.md)
 
@@ -19,7 +19,6 @@
     </li>
     <li><code>top(K)</code>：返回前 <code>K</code> 名参赛者的 <strong>得分总和</strong>。</li>
     <li><code>reset(playerId)</code>：将指定参赛者的成绩清零（换句话说，将其从排行榜中删除）。题目保证在调用此函数前，该参赛者已有成绩，并且在榜单上。</li>
-
 </ol>
 
 <p>请注意，在初始状态下，排行榜是空的。</p>

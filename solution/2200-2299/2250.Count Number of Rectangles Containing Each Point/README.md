@@ -1,4 +1,4 @@
-# [2250. 统计包含每个点的矩形数目](https://leetcode-cn.com/problems/count-number-of-rectangles-containing-each-point)
+# [2250. 统计包含每个点的矩形数目](https://leetcode.cn/problems/count-number-of-rectangles-containing-each-point)
 
 [English Version](/solution/2200-2299/2250.Count%20Number%20of%20Rectangles%20Containing%20Each%20Point/README_EN.md)
 
@@ -59,7 +59,6 @@
 	<li>所有&nbsp;<code>points</code> <strong>互不相同</strong>&nbsp;。</li>
 </ul>
 
-
 ## 解法
 
 <!-- 这里可写通用的实现逻辑 -->
@@ -99,7 +98,8 @@ function countRectangles(rectangles: number[][], points: number[][]): number[] {
         let count = 0;
         for (let h = y; h < n; h++) {
             const nums = ymap[h];
-            let left = 0, right = nums.length;
+            let left = 0,
+                right = nums.length;
             while (left < right) {
                 let mid = (left + right) >> 1;
                 if (x > nums[mid]) {
@@ -108,12 +108,12 @@ function countRectangles(rectangles: number[][], points: number[][]): number[] {
                     right = mid;
                 }
             }
-            count += (nums.length - right);
+            count += nums.length - right;
         }
         ans.push(count);
     }
     return ans;
-};
+}
 ```
 
 ### **...**

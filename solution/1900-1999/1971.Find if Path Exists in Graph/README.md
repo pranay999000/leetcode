@@ -1,4 +1,4 @@
-# [1971. 寻找图中是否存在路径](https://leetcode-cn.com/problems/find-if-path-exists-in-graph)
+# [1971. 寻找图中是否存在路径](https://leetcode.cn/problems/find-if-path-exists-in-graph)
 
 [English Version](/solution/1900-1999/1971.Find%20if%20Path%20Exists%20in%20Graph/README_EN.md)
 
@@ -92,7 +92,7 @@ class Solution:
             if p[x] != x:
                 p[x] = find(p[x])
             return p[x]
-        
+
         p = list(range(n))
         for u, v in edges:
             p[find(u)] = find(v)
@@ -138,7 +138,7 @@ public:
         p.resize(n);
         for (int i = 0; i < n; ++i) p[i] = i;
         for (auto& e : edges) p[find(e[0])] = find(e[1]);
-        return find(source) == find(destination);    
+        return find(source) == find(destination);
     }
 
     int find(int x) {

@@ -1,4 +1,4 @@
-# [973. 最接近原点的 K 个点](https://leetcode-cn.com/problems/k-closest-points-to-origin)
+# [973. 最接近原点的 K 个点](https://leetcode.cn/problems/k-closest-points-to-origin)
 
 [English Version](/solution/0900-0999/0973.K%20Closest%20Points%20to%20Origin/README_EN.md)
 
@@ -112,6 +112,19 @@ function kClosest(points: number[][], k: number): number[][] {
     return points
         .sort((a, b) => a[0] ** 2 + a[1] ** 2 - (b[0] ** 2 + b[1] ** 2))
         .slice(0, k);
+}
+```
+
+### **Rust**
+
+```rust
+impl Solution {
+    pub fn k_closest(mut points: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {
+        points.sort_unstable_by(|a, b| {
+            (a[0].pow(2) + a[1].pow(2)).cmp(&(b[0].pow(2) + b[1].pow(2)))
+        });
+        points[0..k as usize].to_vec()
+    }
 }
 ```
 

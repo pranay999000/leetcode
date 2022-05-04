@@ -1,4 +1,4 @@
-# [1702. 修改后的最大二进制字符串](https://leetcode-cn.com/problems/maximum-binary-string-after-change)
+# [1702. 修改后的最大二进制字符串](https://leetcode.cn/problems/maximum-binary-string-after-change)
 
 [English Version](/solution/1700-1799/1702.Maximum%20Binary%20String%20After%20Change/README_EN.md)
 
@@ -19,7 +19,6 @@
     	<li>比方说， <code>"000<strong>10</strong>" -> "000<strong>01</strong>"</code></li>
     </ul>
     </li>
-
 </ul>
 
 <p>请你返回执行上述操作任意次以后能得到的 <strong>最大二进制字符串</strong> 。如果二进制字符串 <code>x</code> 对应的十进制数字大于二进制字符串 <code>y</code> 对应的十进制数字，那么我们称二进制字符串<em> </em><code>x</code><em> </em>大于二进制字符串<em> </em><code>y</code><em> </em>。</p>

@@ -1,4 +1,4 @@
-# [972. 相等的有理数](https://leetcode-cn.com/problems/equal-rational-numbers)
+# [972. 相等的有理数](https://leetcode.cn/problems/equal-rational-numbers)
 
 [English Version](/solution/0900-0999/0972.Equal%20Rational%20Numbers/README_EN.md)
 
@@ -26,7 +26,6 @@
     	<li>例： <code>0.1(6)</code> ， <code>1.(9)</code>， <code>123.00(1212)</code></li>
     </ul>
     </li>
-
 </ul>
 
 <p>十进制展开的重复部分通常在一对圆括号内表示。例如：</p>

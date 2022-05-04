@@ -1,4 +1,4 @@
-# [1488. 避免洪水泛滥](https://leetcode-cn.com/problems/avoid-flood-in-the-city)
+# [1488. 避免洪水泛滥](https://leetcode.cn/problems/avoid-flood-in-the-city)
 
 [English Version](/solution/1400-1499/1488.Avoid%20Flood%20in%20The%20City/README_EN.md)
 
@@ -25,7 +25,7 @@
 
 <p>如果有多种可行解，请返回它们中的 <strong>任意一个</strong>&nbsp;。如果没办法阻止洪水，请返回一个 <strong>空的数组</strong>&nbsp;。</p>
 
-<p>请注意，如果你选择抽干一个装满水的湖泊，它会变成一个空的湖泊。但如果你选择抽干一个空的湖泊，那么将无事发生（详情请看示例 4）。</p>
+<p>请注意，如果你选择抽干一个装满水的湖泊，它会变成一个空的湖泊。但如果你选择抽干一个空的湖泊，那么将无事发生。</p>
 
 <p>&nbsp;</p>
 

@@ -1,4 +1,4 @@
-# [578. 查询回答率最高的问题](https://leetcode-cn.com/problems/get-highest-answer-rate-question)
+# [578. 查询回答率最高的问题](https://leetcode.cn/problems/get-highest-answer-rate-question)
 
 [English Version](/solution/0500-0599/0578.Get%20Highest%20Answer%20Rate%20Question/README_EN.md)
 
@@ -77,7 +77,7 @@ SELECT question_id AS survey_log
 FROM   SurveyLog
 GROUP  BY 1
 ORDER  BY SUM(action = 'answer') / SUM(action = 'show') DESC
-LIMIT  1; 
+LIMIT  1;
 ```
 
 <!-- tabs:end -->

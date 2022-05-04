@@ -1,4 +1,4 @@
-# [17.12. BiNode](https://leetcode-cn.com/problems/binode-lcci)
+# [17.12. BiNode](https://leetcode.cn/problems/binode-lcci)
 
 [中文文档](/lcci/17.12.BiNode/README.md)
 
@@ -76,7 +76,7 @@ class Solution:
  */
 class Solution {
     private TreeNode prev;
-    
+
     public TreeNode convertBiNode(TreeNode root) {
         TreeNode dummy = new TreeNode(0, null, root);
         prev = dummy;
@@ -112,7 +112,7 @@ class Solution {
 class Solution {
 public:
     TreeNode* prev;
-    
+
     TreeNode* convertBiNode(TreeNode* root) {
         TreeNode* dummy = new TreeNode(0, nullptr, root);
         prev = dummy;

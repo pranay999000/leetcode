@@ -1,4 +1,4 @@
-# [1679. K 和数对的最大数目](https://leetcode-cn.com/problems/max-number-of-k-sum-pairs)
+# [1679. K 和数对的最大数目](https://leetcode.cn/problems/max-number-of-k-sum-pairs)
 
 [English Version](/solution/1600-1699/1679.Max%20Number%20of%20K-Sum%20Pairs/README_EN.md)
 
@@ -96,10 +96,29 @@ class Solution {
 }
 ```
 
-### **...**
+### **C++**
 
-```
-
+```cpp
+class Solution {
+ public:
+  int maxOperations(vector<int>& nums, int k) {
+    int n = nums.size();
+    sort(nums.begin(), nums.end());
+    int cnt = 0;
+    int i = 0, j = n - 1;
+    while (i < j) {
+      if (nums[i] + nums[j] == k) {
+        i++;
+        j--;
+        cnt++;
+      } else if (nums[i] + nums[j] > k) {
+        j--;
+      } else
+        i++;
+    }
+    return cnt;
+  }
+};
 ```
 
 <!-- tabs:end -->

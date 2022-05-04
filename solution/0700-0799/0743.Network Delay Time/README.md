@@ -1,4 +1,4 @@
-# [743. 网络延迟时间](https://leetcode-cn.com/problems/network-delay-time)
+# [743. 网络延迟时间](https://leetcode.cn/problems/network-delay-time)
 
 [English Version](/solution/0700-0799/0743.Network%20Delay%20Time/README_EN.md)
 
@@ -652,7 +652,7 @@ class Solution {
 public:
     const int inf = 0x3f3f;
 
-    int networkDelayTime(vector<vector<int>>& times, int n, int k) {  
+    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
         vector<int> dist(n, inf);
         vector<vector<vector<int>>> g(n);
         for (auto& e : times)

@@ -1,4 +1,4 @@
-# [2244. 完成所有任务需要的最少轮数](https://leetcode-cn.com/problems/minimum-rounds-to-complete-all-tasks)
+# [2244. 完成所有任务需要的最少轮数](https://leetcode.cn/problems/minimum-rounds-to-complete-all-tasks)
 
 [English Version](/solution/2200-2299/2244.Minimum%20Rounds%20to%20Complete%20All%20Tasks/README_EN.md)
 
@@ -75,10 +75,10 @@ function minimumRounds(tasks: number[]): number {
         let val = hashMap.get(key);
         if (val < 2) return -1;
         const ctn = Math.floor(val / 3) + (val % 3 == 0 ? 0 : 1);
-        ans += ctn; 
+        ans += ctn;
     }
     return ans;
-};
+}
 ```
 
 ### **...**

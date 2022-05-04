@@ -1,4 +1,5 @@
 import json
+import random
 import re
 import time
 from typing import List
@@ -16,7 +17,7 @@ user_agent = (
 sub_folders = [
     str(i * 100).zfill(4) + '-' + str(i * 100 + 99).zfill(4) for i in range(100)
 ]
-cn_graph_url = 'https://leetcode-cn.com/graphql'
+cn_graph_url = 'https://leetcode.cn/graphql'
 difficulty = dict(Easy='简单', Medium='中等', Hard='困难')
 
 """
@@ -27,7 +28,7 @@ difficulty = dict(Easy='简单', Medium='中等', Hard='困难')
     "paid_only":true,
     "paid_only_cn":true,
     "category":"Algorithms",
-    "url_cn":"https://leetcode-cn.com/problems/count-positions-on-street-with-required-brightness",
+    "url_cn":"https://leetcode.cn/problems/count-positions-on-street-with-required-brightness",
     "url_en":"https://leetcode.com/problems/count-positions-on-street-with-required-brightness",
     "relative_path_cn":"/solution/2200-2299/2237.Count%20Positions%20on%20Street%20With%20Required%20Brightness/README.md",
     "relative_path_en":"/solution/2200-2299/2237.Count%20Positions%20on%20Street%20With%20Required%20Brightness/README_EN.md",
@@ -68,7 +69,7 @@ public:
         }
     ],
     "md_table_row_cn":[
-        "[2237](https://leetcode-cn.com/problems/count-positions-on-street-with-required-brightness)",
+        "[2237](https://leetcode.cn/problems/count-positions-on-street-with-required-brightness)",
         "[Count Positions on Street With Required Brightness](/solution/2200-2299/2237.Count%20Positions%20on%20Street%20With%20Required%20Brightness/README.md)",
         "",
         "中等",
@@ -133,7 +134,7 @@ class Spider:
             'User-Agent': user_agent,
             'Connection': 'keep-alive',
             'Content-Type': 'application/json',
-            'Referer': 'https://leetcode-cn.com/problems/' + question_title_slug,
+            'Referer': 'https://leetcode.cn/problems/' + question_title_slug,
             'cookie': self.cookie_cn,
         }
         self.session.post(
@@ -174,7 +175,8 @@ class Spider:
         return res['data']['question']
 
     def get_question_detail(self, question_title_slug, retry_times=0):
-        time.sleep(0.5)
+
+        time.sleep(0.5 + random.random())
         for i in range(retry_times + 1):
             try:
                 question_detail = self._get_question_detail(question_title_slug)
@@ -182,7 +184,7 @@ class Spider:
                     return question_detail
             except Exception as e:
                 print(f'error:{str(e)}')
-            time.sleep(2)
+            time.sleep(random.choice(range(2, 5)))
         return None
 
     def handle(self, question: dict) -> dict:
@@ -190,7 +192,7 @@ class Spider:
         question_detail = self.get_question_detail(question_title_slug, retry_times=5)
         if not question_detail:
             return {}
-        url_cn = f'https://leetcode-cn.com/problems/{question_title_slug}'
+        url_cn = f'https://leetcode.cn/problems/{question_title_slug}'
         url_en = f'https://leetcode.com/problems/{question_title_slug}'
         frontend_question_id = str(question['stat']['frontend_question_id']).zfill(4)
         self.raw_data[frontend_question_id] = question_detail

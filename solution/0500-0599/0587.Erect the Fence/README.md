@@ -1,4 +1,4 @@
-# [587. 安装栅栏](https://leetcode-cn.com/problems/erect-the-fence)
+# [587. 安装栅栏](https://leetcode.cn/problems/erect-the-fence)
 
 [English Version](/solution/0500-0599/0587.Erect%20the%20Fence/README_EN.md)
 
@@ -46,7 +46,6 @@
     <li>花园至少有一棵树。</li>
     <li>所有树的坐标都是不同的。</li>
     <li>输入的点<strong>没有</strong>顺序。输出顺序也没有要求。</li>
-
 </ol>
 
 ## 解法

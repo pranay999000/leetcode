@@ -1,4 +1,4 @@
-# [面试题 17.12. BiNode](https://leetcode-cn.com/problems/binode-lcci)
+# [面试题 17.12. BiNode](https://leetcode.cn/problems/binode-lcci)
 
 [English Version](/lcci/17.12.BiNode/README_EN.md)
 
@@ -36,7 +36,6 @@
 时间复杂度 O(n)。
 
 同 [897. 递增顺序查找树](/solution/0800-0899/0897.Increasing%20Order%20Search%20Tree/README.md)。
-
 
 <!-- tabs:start -->
 
@@ -86,7 +85,7 @@ class Solution:
  */
 class Solution {
     private TreeNode prev;
-    
+
     public TreeNode convertBiNode(TreeNode root) {
         TreeNode dummy = new TreeNode(0, null, root);
         prev = dummy;
@@ -122,7 +121,7 @@ class Solution {
 class Solution {
 public:
     TreeNode* prev;
-    
+
     TreeNode* convertBiNode(TreeNode* root) {
         TreeNode* dummy = new TreeNode(0, nullptr, root);
         prev = dummy;

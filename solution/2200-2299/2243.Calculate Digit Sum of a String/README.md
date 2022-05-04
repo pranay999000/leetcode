@@ -1,4 +1,4 @@
-# [2243. 计算字符串的数字和](https://leetcode-cn.com/problems/calculate-digit-sum-of-a-string)
+# [2243. 计算字符串的数字和](https://leetcode.cn/problems/calculate-digit-sum-of-a-string)
 
 [English Version](/solution/2200-2299/2243.Calculate%20Digit%20Sum%20of%20a%20String/README_EN.md)
 
@@ -54,7 +54,6 @@ s 变为 "0" + "0" + "0" = "000" ，其长度等于 k ，所以返回 "000" 。
 	<li><code>s</code> 仅由数字（<code>0</code> - <code>9</code>）组成。</li>
 </ul>
 
-
 ## 解法
 
 <!-- 这里可写通用的实现逻辑 -->
@@ -91,7 +90,7 @@ function digitSum(s: string, k: number): string {
         ans = [];
     }
     return s;
-};
+}
 ```
 
 ### **...**

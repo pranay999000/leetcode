@@ -1,4 +1,4 @@
-# [706. 设计哈希映射](https://leetcode-cn.com/problems/design-hashmap)
+# [706. 设计哈希映射](https://leetcode.cn/problems/design-hashmap)
 
 [English Version](/solution/0700-0799/0706.Design%20HashMap/README_EN.md)
 
@@ -95,15 +95,15 @@ class MyHashMap {
     public MyHashMap() {
         Arrays.fill(data, -1);
     }
-    
+
     public void put(int key, int value) {
         data[key] = value;
     }
-    
+
     public int get(int key) {
         return data[key];
     }
-    
+
     public void remove(int key) {
         data[key] = -1;
     }
@@ -159,15 +159,15 @@ public:
     MyHashMap() {
         memset(hash, -1, sizeof hash);
     }
-    
+
     void put(int key, int value) {
         hash[key] = value;
     }
-    
+
     int get(int key) {
         return hash[key];
     }
-    
+
     void remove(int key) {
         hash[key] = -1;
     }

@@ -1,4 +1,4 @@
-# [674. 最长连续递增序列](https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence)
+# [674. 最长连续递增序列](https://leetcode.cn/problems/longest-continuous-increasing-subsequence)
 
 [English Version](/solution/0600-0699/0674.Longest%20Continuous%20Increasing%20Subsequence/README_EN.md)
 
@@ -153,6 +153,23 @@ func max(a, b int) int {
 		return a
 	}
 	return b
+}
+```
+
+### **TypeScript**
+
+```ts
+function findLengthOfLCIS(nums: number[]): number {
+    const n = nums.length;
+    let res = 1;
+    let i = 0;
+    for (let j = 1; j < n; j++) {
+        if (nums[j - 1] >= nums[j]) {
+            res = Math.max(res, j - i);
+            i = j;
+        }
+    }
+    return Math.max(res, n - i);
 }
 ```
 

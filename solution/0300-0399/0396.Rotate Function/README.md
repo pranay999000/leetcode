@@ -1,4 +1,4 @@
-# [396. 旋转函数](https://leetcode-cn.com/problems/rotate-function)
+# [396. 旋转函数](https://leetcode.cn/problems/rotate-function)
 
 [English Version](/solution/0300-0399/0396.Rotate%20Function/README_EN.md)
 
@@ -60,7 +60,6 @@ f(1) = 1 * nums[0] + 2 * nums[1] + ... + 0 * nums[n - 1]
 ...
 f(k) = f(k - 1) + s - n * nums[n - k]
 ```
-
 
 <!-- tabs:start -->
 

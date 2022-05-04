@@ -1,4 +1,4 @@
-# [417. 太平洋大西洋水流问题](https://leetcode-cn.com/problems/pacific-atlantic-water-flow)
+# [417. 太平洋大西洋水流问题](https://leetcode.cn/problems/pacific-atlantic-water-flow)
 
 [English Version](/solution/0400-0499/0417.Pacific%20Atlantic%20Water%20Flow/README_EN.md)
 
@@ -12,7 +12,7 @@
 
 <p>岛上雨水较多，如果相邻单元格的高度 <strong>小于或等于</strong> 当前单元格的高度，雨水可以直接向北、南、东、西流向相邻单元格。水可以从海洋附近的任何单元格流入海洋。</p>
 
-<p>返回 <em>网格坐标 <code>result</code>&nbsp;的 <strong>2D列表</strong> ，其中&nbsp;<code>result[i] = [r<sub>i</sub>, c<sub>i</sub>]</code>&nbsp;表示雨水可以从单元格 <code>(ri, ci)</code> 流向 <strong>太平洋和大西洋</strong></em> 。</p>
+<p>返回网格坐标 <code>result</code>&nbsp;的 <strong>2D 列表</strong> ，其中&nbsp;<code>result[i] = [r<sub>i</sub>, c<sub>i</sub>]</code>&nbsp;表示雨水从单元格 <code>(ri, ci)</code> 流动 <strong>既可流向太平洋也可流向大西洋</strong> 。</p>
 
 <p>&nbsp;</p>
 

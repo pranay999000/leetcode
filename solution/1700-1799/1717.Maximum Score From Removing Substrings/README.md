@@ -1,4 +1,4 @@
-# [1717. 删除子字符串的最大得分](https://leetcode-cn.com/problems/maximum-score-from-removing-substrings)
+# [1717. 删除子字符串的最大得分](https://leetcode.cn/problems/maximum-score-from-removing-substrings)
 
 [English Version](/solution/1700-1799/1717.Maximum%20Score%20From%20Removing%20Substrings/README_EN.md)
 
@@ -19,7 +19,6 @@
     	<li>比方说，从 <code>"cabx<strong>ba</strong>e"</code> 删除 <code>ba</code> ，得到 <code>"cabxe"</code> 。</li>
     </ul>
     </li>
-
 </ul>
 
 <p>请返回对 <code>s</code> 字符串执行上面操作若干次能得到的最大得分。</p>

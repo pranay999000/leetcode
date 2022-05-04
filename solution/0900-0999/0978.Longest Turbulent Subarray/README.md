@@ -1,4 +1,4 @@
-# [978. 最长湍流子数组](https://leetcode-cn.com/problems/longest-turbulent-subarray)
+# [978. 最长湍流子数组](https://leetcode.cn/problems/longest-turbulent-subarray)
 
 [English Version](/solution/0900-0999/0978.Longest%20Turbulent%20Subarray/README_EN.md)
 
@@ -25,7 +25,6 @@
     	<li>当 <code>k</code>&nbsp;为奇数时，&nbsp;<code>A[k] &lt; A[k+1]</code>。</li>
     </ul>
     </li>
-
 </ul>
 
 <p>&nbsp;</p>
