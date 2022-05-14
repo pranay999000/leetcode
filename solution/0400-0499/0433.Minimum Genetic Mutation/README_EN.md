@@ -53,7 +53,7 @@
 
 ## Solutions
 
-BFS.
+BFS or DFS.
 
 <!-- tabs:start -->
 
@@ -76,6 +76,28 @@ class Solution:
                         q.append((next, step + 1))
                         s.remove(next)
         return -1
+```
+
+```python
+class Solution:
+    def minMutation(self, start: str, end: str, bank: List[str]) -> int:
+        def dfs(start, t):
+            if start == end:
+                nonlocal ans
+                ans = min(ans, t)
+                return
+            for i, x in enumerate(start):
+                for y in 'ACGT':
+                    if x != y:
+                        nxt = start[:i] + y + start[i + 1:]
+                        if nxt in s:
+                            s.remove(nxt)
+                            dfs(nxt, t + 1)
+
+        s = set(bank)
+        ans = float('inf')
+        dfs(start, 0)
+        return -1 if ans == float('inf') else ans
 ```
 
 ### **Java**
@@ -112,6 +134,44 @@ class Solution {
             }
         }
         return -1;
+    }
+}
+```
+
+```java
+class Solution {
+    private int ans;
+    private Set<String> s;
+    private static final char[] seq = {'A', 'C', 'G', 'T'};
+
+    public int minMutation(String start, String end, String[] bank) {
+        s = new HashSet<>();
+        for (String b : bank) {
+            s.add(b);
+        }
+        ans = Integer.MAX_VALUE;
+        dfs(start, end, 0);
+        s.remove(start);
+        return ans == Integer.MAX_VALUE ? -1 : ans;
+    }
+
+    private void dfs(String start, String end, int t) {
+        if (start.equals(end)) {
+            ans = Math.min(ans, t);
+            return;
+        }
+        for (int i = 0; i < start.length(); ++i) {
+            for (char c : seq) {
+                if (start.charAt(i) == c) {
+                    continue;
+                }
+                String nxt = start.substring(0, i) + c + start.substring(i + 1);
+                if (s.contains(nxt)) {
+                    s.remove(nxt);
+                    dfs(nxt, end, t + 1);
+                }
+            }
+        }
     }
 }
 ```
@@ -156,6 +216,44 @@ public:
 };
 ```
 
+```cpp
+class Solution {
+public:
+    int ans;
+    string seq = "ACGT";
+
+    int minMutation(string start, string end, vector<string>& bank) {
+        unordered_set<string> s;
+        for (auto& b : bank) s.insert(b);
+        ans = INT_MAX;
+        s.erase(start);
+        dfs(start, end, s, 0);
+        return ans == INT_MAX ? -1 : ans;
+    }
+
+    void dfs(string& start, string& end, unordered_set<string>& s, int t) {
+        if (start == end)
+        {
+            ans = min(ans, t);
+            return;
+        }
+        for (int i = 0; i < start.size(); ++i)
+        {
+            for (char& c : seq)
+            {
+                if (start[i] == c) continue;
+                string nxt = start.substr(0, i) + c + start.substr(i + 1, start.size() - i - 1);
+                if (s.count(nxt))
+                {
+                    s.erase(nxt);
+                    dfs(nxt, end, s, t + 1);
+                }
+            }
+        }
+    }
+};
+```
+
 ### **Go**
 
 ```go
@@ -192,6 +290,114 @@ func minMutation(start string, end string, bank []string) int {
 		}
 	}
 	return -1
+}
+```
+
+```go
+func minMutation(start string, end string, bank []string) int {
+	s := make(map[string]bool)
+	for _, b := range bank {
+		s[b] = true
+	}
+	ans := math.MaxInt32
+	s[start] = false
+	seq := []rune{'A', 'C', 'G', 'T'}
+	var dfs func(start string, t int)
+	dfs = func(start string, t int) {
+		if start == end {
+			if ans > t {
+				ans = t
+			}
+			return
+		}
+		for i, x := range start {
+			for _, y := range seq {
+				if x == y {
+					continue
+				}
+				nxt := start[:i] + string(y) + start[i+1:]
+				if s[nxt] {
+					s[nxt] = false
+					dfs(nxt, t+1)
+				}
+			}
+		}
+	}
+	dfs(start, 0)
+	if ans == math.MaxInt32 {
+		return -1
+	}
+	return ans
+}
+```
+
+### **TypeScript**
+
+```ts
+function minMutation(start: string, end: string, bank: string[]): number {
+    const queue = [start];
+    let res = 0;
+    while (queue.length !== 0) {
+        const n = queue.length;
+        for (let i = 0; i < n; i++) {
+            const s1 = queue.shift();
+            if (s1 === end) {
+                return res;
+            }
+
+            for (let j = bank.length - 1; j >= 0; j--) {
+                const s2 = bank[j];
+                let count = 0;
+                for (let k = 0; k < 8; k++) {
+                    if (s1[k] !== s2[k]) {
+                        count++;
+                    }
+                }
+                if (count <= 1) {
+                    queue.push(...bank.splice(j, 1));
+                }
+            }
+        }
+        res++;
+    }
+    return -1;
+}
+```
+
+### **Rust**
+
+```rust
+use std::collections::VecDeque;
+impl Solution {
+    pub fn min_mutation(start: String, end: String, mut bank: Vec<String>) -> i32 {
+        let mut queue = vec![start].into_iter().collect::<VecDeque<String>>();
+        let mut res = 0;
+        while !queue.is_empty() {
+            let n = queue.len();
+            for _ in 0..n {
+                let s1 = queue.pop_front().unwrap();
+                if s1 == end {
+                    return res;
+                }
+
+                for i in (0..bank.len()).rev() {
+                    let s1 = s1.as_bytes();
+                    let s2 = bank[i].as_bytes();
+                    let mut count = 0;
+                    for j in 0..8 {
+                        if s1[j] != s2[j] {
+                            count += 1;
+                        }
+                    }
+                    if count <= 1 {
+                        queue.push_back(bank.remove(i));
+                    }
+                }
+            }
+            res += 1;
+        }
+        -1
+    }
 }
 ```
 
